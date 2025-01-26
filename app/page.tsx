@@ -12,7 +12,7 @@ export default function Page() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 h-full">
+      <div className="relative z-10 min-h-screen flex flex-col">
         <header className="absolute top-0 left-0 right-0 z-20">
           <nav className="container flex items-center justify-between py-6">
             <WebitLogo />
@@ -24,7 +24,7 @@ export default function Page() {
           </nav>
         </header>
 
-        <main className="container relative min-h-screen pt-32 w-full flex flex-col items-center justify-center">
+        <main className="container relative pt-32 w-full flex-grow flex flex-col items-center justify-center">
           <div className="max-w-3xl">
               <StrategicInnovationLogo />
             <div className="text-lg text-gray-400 space-y-4">
@@ -44,15 +44,11 @@ export default function Page() {
           </div>
         </main>
 
-        {/* Sticky Footer */}
-        <div className="sticky bottom-0 left-0 right-0 z-50 ">
+        <footer className="z-50">
           <div className="container flex items-center justify-between py-4 text-sm text-cyan-200">
-            <div>© 2024 WEBIT Strategic Innovation Partners</div>
-            <div className="flex gap-6">
-              <span>Amsterdam · Berlin · Wyoming · Cape Town</span>
-            </div>
+            © {new Date().getFullYear()} WEBIT LLC | Innovation Partners
           </div>
-        </div>
+        </footer>
       </div>
     </div>
   )

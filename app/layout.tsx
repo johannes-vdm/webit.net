@@ -4,8 +4,11 @@ import { ThemeProvider } from "./providers"
 import type { ReactNode } from "react"
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'WEBIT, Strategic Innovation Partners',
+  description: 'We create using the future of technology and innovation to solve problems for our clients and create value.',
+  icons: {
+    icon: '/webit.ico'
+  }
 }
 
 export default function RootLayout({
