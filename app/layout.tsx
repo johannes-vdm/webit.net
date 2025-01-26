@@ -8,6 +8,16 @@ import { Analytics } from "@vercel/analytics/react"
 export const metadata: Metadata = {
   title: 'WEBIT, Strategic Innovation Partners',
   description: 'We create using the future of technology and innovation to solve problems for our clients and create value.',
+  openGraph: {
+    images: [
+      {
+        url: '/cover.png',
+        width: 1200,
+        height: 630,
+        alt: 'WEBIT - Strategic Innovation Partners'
+      }
+    ]
+  },
   icons: {
     icon: '/webit.ico'
   }
