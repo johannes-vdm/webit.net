@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>PixelBox</title>
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            overflow-x: hidden;
+        }
+
+        .pixel-header {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pixel-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .pixel-logo {
+            position: relative;
+            z-index: 1;
+            width: 300px;
+            filter: drop-shadow(0 0 10px #00ff00);
+        }
+
+        .terminal-section {
+            padding: 4rem 0;
+            border-top: 3px solid #00ff00;
+        }
+
+        .terminal-text {
+            background: #000;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid #00ff00;
+        }
+
+        .pixel-team img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin: 0.5rem;
+            border: 2px solid #00ff00;
+        }
+
+        .pixel-form input {
+            background: #000;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            width: 100%;
+        }
+
+        .pixel-form button {
+            background: #00ff00;
+            color: #000;
+            border: none;
+            padding: 0.5rem 2rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header class="pixel-header">
+        <canvas class="pixel-canvas"></canvas>
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgMTAwIj48dGV4dCB4PSIwIiB5PSI3MCIgZm9udC1mYW1pbHk9IkNvdXJpZXIgTmV3IiBmaWxsPSIjMDBmZjAwIiBmb250LXNpemU9IjQ4Ij5QSVhFTEJPVFg8L3RleHQ+PC9zdmc+" class="pixel-logo">
+    </header>
+
+    <section class="terminal-section">
+        <div class="container">
+            <div class="terminal-text">
+                <h2>> ABOUT SYSTEM</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>- Automated logistics protocol</p>
+                        <p>- Tax calculation module</p>
+                        <p>- Custom packaging interface</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>- Direct-to-consumer pipeline</p>
+                        <p>- Anti-middleware security</p>
+                        <p>- Profit optimization suite</p>
+                    </div>
+                    <div class="col-md-4">
+                        <form class="pixel-form">
+                            <input type="email" placeholder="ENTER EMAIL">
+                            <button>SUBSCRIBE</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="terminal-section">
+        <div class="container">
+            <h2>> OPERATOR TEAM</h2>
+            <div class="row pixel-team">
+                <!-- Add team member images -->
+                <div class="col-3 col-md-2"><img src="placeholder.jpg"></div>
+                <div class="col-3 col-md-2"><img src="placeholder.jpg"></div>
+                <div class="col-3 col-md-2"><img src="placeholder.jpg"></div>
+                <div class="col-3 col-md-2"><img src="placeholder.jpg"></div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        const canvas = document.querySelector('.pixel-canvas');
+        const ctx = canvas.getContext('2d');
+        let time = 0;
+        const waveSources = [
+            { x: 0.3, y: 0.5, speed: 1.2, angle: 0 },
+            { x: 0.7, y: 0.5, speed: 0.8, angle: Math.PI }
+        ];
+
+        // Add movement parameters
+        const sourceSpeed = 0.002;
+        const orbitRadius = 0.1;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const cellSize = 8;
+            const cols = Math.ceil(canvas.width / cellSize);
+            const rows = Math.ceil(canvas.height / cellSize);
+
+            // Update wave source positions
+            waveSources.forEach(source => {
+                source.angle += sourceSpeed;
+                source.x = 0.5 + Math.cos(source.angle) * orbitRadius;
+                source.y = 0.5 + Math.sin(source.angle) * orbitRadius;
+            });
+
+            for(let i = 0; i < cols; i++) {
+                for(let j = 0; j < rows; j++) {
+                    const x = i * cellSize;
+                    const y = j * cellSize;
+                    
+                    // Calculate wave patterns
+                    let height = 0;
+                    waveSources.forEach(source => {
+                        const dx = (x/canvas.width) - source.x;
+                        const dy = (y/canvas.height) - source.y;
+                        const distance = Math.sqrt(dx*dx + dy*dy) * 20;
+                        height += Math.sin(distance - time * source.speed) * 
+                                 Math.exp(-distance * 0.2);
+                    });
+
+                    // Add turbulence
+                    height += Math.sin(x * 0.1 + time) * 0.2;
+                    height += Math.cos(y * 0.1 + time * 1.2) * 0.2;
+
+                    // Color based on wave height
+                    const intensity = Math.min(Math.abs(height * 50), 255);
+                    ctx.fillStyle = `rgba(0, ${100 + intensity}, ${200 + intensity}, ${0.5 + intensity/510})`;
+                    
+                    // Draw pixel with size variation
+                    const size = cellSize * (0.8 + Math.abs(height) * 0.3);
+                    ctx.fillRect(
+                        x - size/2 + cellSize/2,
+                        y - size/2 + cellSize/2,
+                        size,
+                        size
+                    );
+                }
+            }
+
+            time += 0.02;
+        }
+
+        resizeCanvas();
+        animate();
+        window.addEventListener('resize', resizeCanvas);
+    </script>
+</body>
+</html>
