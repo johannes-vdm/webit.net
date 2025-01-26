@@ -3,10 +3,16 @@
 <head>
     <meta charset="utf-8">
     <title>PixelBox</title>
-    <link href="styles.css" rel="stylesheet">
+    <link href="bootstrap.css" rel="stylesheet">
     <style>
         body {
-            background: #0a0a0a;
+            margin: 0;
+            padding: 0;
+            background: #0a0a0a url('Dreamy Gradient Blur Texture.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-blend-mode: overlay;
             color: #00ff00;
             font-family: 'Courier New', monospace;
             overflow-x: hidden;
@@ -29,12 +35,6 @@
             z-index: 0;
         }
 
-        .pixel-logo {
-            position: relative;
-            z-index: 1;
-            width: 300px;
-            filter: drop-shadow(0 0 10px #00ff00);
-        }
 
         .terminal-section {
             padding: 4rem 0;
@@ -82,53 +82,103 @@
             right: 0;
             bottom: 0;
             background: rgba(0, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px) brightness(0.8);
             z-index: 0;
+        }
+
+        .modern-section {
+            background: linear-gradient(135deg, #ff00ff 0%, #00ffff 100%);
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            color: #fff;
         }
     </style>
 </head>
 <body>
     <header class="pixel-header">
         <canvas class="pixel-canvas"></canvas>
-        <object type="image/svg+xml" data="Webit Logo.svg" class="pixel-logo"></object>
+        <div class="glass-panel">
+            <div class="text-container" style="position: absolute; z-index: 999; height: 100vh; width: 100vw; display: flex; align-items: center; justify-content: center;">
+                <img src="Dreamy Gradient Blur Texture.png" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:1; transform: scale(2); opacity: 0.5; transform-origin: center;">
+                <img src="Webit Logo.svg" class="pixel-logo" style="position:relative; z-index:2; width:300px;">
+            </div>
+        </div>
     </header>
 
+    <!-- New "Resources" and "Services" sections -->
     <section class="terminal-section">
         <div class="container">
             <div class="terminal-text">
-                <h2>> ABOUT SYSTEM</h2>
-                <div class="row">
-                    <div class="col-md-4">
-                        <p>- Automated logistics protocol</p>
-                        <p>- Tax calculation module</p>
-                        <p>- Custom packaging interface</p>
-                    </div>
-                    <div class="col-md-4">
-                        <p>- Direct-to-consumer pipeline</p>
-                        <p>- Anti-middleware security</p>
-                        <p>- Profit optimization suite</p>
-                    </div>
-                    <div class="col-md-4">
-                        <form class="pixel-form">
-                            <input type="email" placeholder="ENTER EMAIL">
-                            <button>SUBSCRIBE</button>
-                        </form>
-                    </div>
-                </div>
+                <h2>> RESOURCES</h2>
+                <p>We bring talent and expertise to your business to help you succeed. As a technology partner, we help shape companies' technology sectors.</p>
+                <p>We develop engaging and functional websites and applications. But it's not just IT development you need: you need creativity to create engaging and unique designs that your clients and personnel will enjoy working on.</p>
+                <p>We are committed to making your idea as great as possible.</p>
             </div>
         </div>
     </section>
 
     <section class="terminal-section">
         <div class="container">
-            <h2>> OPERATOR TEAM</h2>
-            <div class="row pixel-team">
-                <!-- Add team member images -->
-                <div class="col-3 col-md-2"><img src="placeholder.jpg"></div>
-                <div class="col-3 col-md-2"><img src="placeholder.jpg"></div>
-                <div class="col-3 col-md-2"><img src="placeholder.jpg"></div>
-                <div class="col-3 col-md-2"><img src="placeholder.jpg"></div>
+            <h2>> SERVICES</h2>
+            <p>We offer a full range of capabilities to help businesses scale and innovate.</p>
+            <ul>
+                <li>Software Services: WEB · APP · DIGITAL DESIGN · SEO · HOSTING · DEPLOYMENT</li>
+                <li>Cloud Development</li>
+                <li>Mobile App Development</li>
+                <li>Digital Design</li>
+                <li>Search Engine Optimization</li>
+                <li>Content Management</li>
+                <li>Server Deployment and Hosting</li>
+            </ul>
+            <p>Our integrated approach ensures your solutions are future-proof and adaptable, no matter the platform.</p>
+        </div>
+    </section>
+
+    <!-- More in-depth description of each offered service -->
+    <section class="terminal-section">
+        <div class="container">
+            <div class="terminal-text">
+                <h2>> SOFTWARE SERVICES</h2>
+                <p>We develop and design custom high-performing web and mobile applications. Our goal is to provide an outstanding user experience, whether it's for your customers or team.</p>
+                <p>We also integrate creativity into every project, ensuring that designs are engaging and that our software fits your brand's unique image.</p>
+                <p>We handle search engine optimization, content management, server deployment, and hosting to complete the cycle of your solution's launch and maintenance.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Our Technology Stack -->
+    <section class="terminal-section">
+        <div class="container">
+            <h2>> OUR TECHNOLOGY STACK</h2>
+            <p>We integrate with any technologies you already use. One of our core tools is React, providing excellent interactivity without sacrificing performance.</p>
+            <p>Thanks to React's virtual DOM, even complex web applications can offer great interactivity while remaining efficient and easy to scale.</p>
+        </div>
+    </section>
+
+    <!-- Our Development Model -->
+    <section class="terminal-section">
+        <div class="container">
+            <h2>> OUR DEVELOPMENT MODEL</h2>
+            <ul>
+                <li><strong>Full Scalability</strong>: Automatically right-size cloud computing resources based on usage.</li>
+                <li><strong>Code Speed</strong>: We reduce time-to-market under a perfected continuous deployment model.</li>
+                <li><strong>Faster Delivery</strong>: Rapid iteration cycles ensure quick turnaround times.</li>
+                <li><strong>Never Overspend</strong>: Under a pay-per-use model, you avoid idle server costs.</li>
+                <li><strong>Reliable Security</strong>: The cloud offers first-class security, so you won't have to build it from scratch.</li>
+            </ul>
+            <p>Empowering Online Presence: Get ahead of competitors with technology that accelerates success.</p>
+            <p><strong>Get Started!</strong></p>
+            <p>© 2025, WEBIT Software. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </section>
+
+    <section class="modern-section">
+        <div class="container">
+            <h2>> FUTURE</h2>
+            <p>We pave the way for tomorrow's technology with visually engaging layouts and seamless user experiences.</p>
+            <p>Our team stands at the leading edge of evolving tech, committed to bringing the best in design and innovation.</p>
+            <p>Step into the future with a platform built to impress, inspire, and drive success.</p>
         </div>
     </section>
 
@@ -153,7 +203,7 @@
 
         function animate() {
             requestAnimationFrame(animate);
-            ctx.fillStyle = '#000';
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             const cellSize = 8;
