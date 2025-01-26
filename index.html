@@ -8,12 +8,12 @@
         body {
             margin: 0;
             padding: 0;
-            background: #0a0a0a url('Dreamy Gradient Blur Texture.png');
+            /* background: #0a0a0a url('Dreamy Gradient Blur Texture.png'); */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-blend-mode: overlay;
-            color: #00ff00;
+            color: white;
             font-family: 'Courier New', monospace;
             overflow-x: hidden;
         }
@@ -38,14 +38,12 @@
 
         .terminal-section {
             padding: 4rem 0;
-            border-top: 3px solid #00ff00;
         }
 
         .terminal-text {
             background: #000;
             padding: 2rem;
             margin: 2rem 0;
-            border: 2px solid #00ff00;
         }
 
         .pixel-team img {
@@ -53,21 +51,16 @@
             height: 100px;
             object-fit: cover;
             margin: 0.5rem;
-            border: 2px solid #00ff00;
         }
 
         .pixel-form input {
             background: #000;
-            border: 1px solid #00ff00;
-            color: #00ff00;
             padding: 0.5rem;
             margin: 0.5rem 0;
             width: 100%;
         }
 
         .pixel-form button {
-            background: #00ff00;
-            color: #000;
             border: none;
             padding: 0.5rem 2rem;
             cursor: pointer;
@@ -100,7 +93,7 @@
         <canvas class="pixel-canvas"></canvas>
         <div class="glass-panel">
             <div class="text-container" style="position: absolute; z-index: 999; height: 100vh; width: 100vw; display: flex; align-items: center; justify-content: center;">
-                <img src="Dreamy Gradient Blur Texture.png" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:1; transform: scale(2); opacity: 0.5; transform-origin: center;">
+                <!-- <img src="Dreamy Gradient Blur Texture.png" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:1; transform: scale(2); opacity: 0.5; transform-origin: center;"> -->
                 <img src="Webit Logo.svg" class="pixel-logo" style="position:relative; z-index:2; width:300px;">
             </div>
         </div>
@@ -184,79 +177,79 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
-        const canvas = document.querySelector('.pixel-canvas');
-        const ctx = canvas.getContext('2d');
-        let time = 0;
+        let fps = 30
+        let now
+        let then = Date.now()
+        let interval = 1000 / fps
+        let delta
+
+        const canvas = document.querySelector('.pixel-canvas')
+        const ctx = canvas.getContext('2d')
+        let time = 0
         const waveSources = [
             { x: 0.3, y: 0.5, speed: 1.2, angle: 0 },
-            { x: 0.7, y: 0.5, speed: 0.8, angle: Math.PI }
-        ];
-
-        // Add movement parameters
-        const sourceSpeed = 0.008;
-        const orbitRadius = 0.1;
+            { x: 0.7, y: 0.5, speed: 0.8, angle: Math.PI },
+            { x: 0.8, y: 0.5, speed: 0.3, angle: -Math.PI/3.69 }
+        ]
+        const sourceSpeed = 0.008
+        const orbitRadius = 0.1
 
         function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            canvas.width = window.innerWidth
+            canvas.height = window.innerHeight
         }
 
         function animate() {
-            requestAnimationFrame(animate);
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            requestAnimationFrame(animate)
+            now = Date.now()
+            delta = now - then
+            if (delta > interval) {
+                then = now - (delta % interval)
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.7)'
+                ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-            const cellSize = 8;
-            const cols = Math.ceil(canvas.width / cellSize);
-            const rows = Math.ceil(canvas.height / cellSize);
+                const cellSize = 30
+                const cols = Math.ceil(canvas.width / cellSize)
+                const rows = Math.ceil(canvas.height / cellSize)
 
-            // Update wave source positions
-            waveSources.forEach(source => {
-                source.angle += sourceSpeed;
-                source.x = 0.5 + Math.cos(source.angle) * orbitRadius;
-                source.y = 0.5 + Math.sin(source.angle) * orbitRadius;
-            });
+                waveSources.forEach(source => {
+                    source.angle += sourceSpeed
+                    source.x = 0.5 + Math.cos(source.angle) * orbitRadius
+                    source.y = 0.5 + Math.sin(source.angle) * orbitRadius
+                })
 
-            for(let i = 0; i < cols; i++) {
-                for(let j = 0; j < rows; j++) {
-                    const x = i * cellSize;
-                    const y = j * cellSize;
-                    
-                    // Calculate wave patterns
-                    let height = 0;
-                    waveSources.forEach(source => {
-                        const dx = (x/canvas.width) - source.x;
-                        const dy = (y/canvas.height) - source.y;
-                        const distance = Math.sqrt(dx*dx + dy*dy) * 20;
-                        height += Math.sin(distance - time * source.speed) * 
-                                 Math.exp(-distance * 0.2);
-                    });
-
-                    // Add turbulence
-                    height += Math.sin(x * 0.2 + time * 2) * 0.3;
-                    height += Math.cos(y * 0.2 + time * 2.4) * 0.3;
-
-                    // Color based on wave height
-                    const intensity = Math.min(Math.abs(height * 50), 255);
-                    ctx.fillStyle = `rgba(150, ${200 + intensity}, 255, ${0.6 + intensity/510})`;
-                    
-                    // Draw pixel with size variation
-                    const size = cellSize * (0.8 + Math.abs(height) * 0.3);
-                    ctx.fillRect(
-                        x - size/2 + cellSize/2,
-                        y - size/2 + cellSize/2,
-                        size,
-                        size
-                    );
+                for(let i = 0; i < cols; i++) {
+                    for(let j = 0; j < rows; j++) {
+                        const x = i * cellSize
+                        const y = j * cellSize
+                        let height = 0
+                        waveSources.forEach(source => {
+                            const dx = (x/canvas.width) - source.x
+                            const dy = (y/canvas.height) - source.y
+                            const distance = Math.sqrt(dx*dx + dy*dy) * 20
+                            height += Math.sin(distance - time * source.speed) *
+                                     Math.exp(-distance * 0.2)
+                        })
+                        height += Math.sin(x * 0.2 + time * 2) * 0.3
+                        height += Math.cos(y * 0.2 + time * 2.4) * 0.3
+                        const intensity = Math.min(Math.abs(height * 50), 255)
+                        ctx.fillStyle = `rgba(150, ${200 + intensity}, 255, ${0.6 + intensity/510})`
+                        const size = cellSize * (0.8 + Math.abs(height) * 0.3)
+                        ctx.fillRect(
+                            x - size/2 + cellSize/2,
+                            y - size/2 + cellSize/2,
+                            size,
+                            size
+                        )
+                    }
                 }
+                time += 0.02
             }
-
-            time += 0.02;
         }
 
-        resizeCanvas();
-        animate();
-        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas()
+        animate()
+        window.addEventListener('resize', resizeCanvas)
     </script>
 </body>
 </html>
