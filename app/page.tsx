@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button"
 import { CanvasAnimation } from "@/components/canvas-animation"
 import { WebitLogo } from "@/components/webit-logo"
 import { ContentSections } from "@/components/content-sections"
+import { StrategicInnovationLogo } from "@/components/strategic-innovation-logo"
 
 export default function Page() {
   return (
@@ -28,14 +28,9 @@ export default function Page() {
           </nav>
         </header>
 
-        <main className="container relative min-h-screen pt-32">
-          <div className="max-w-3xl space-y-8">
-            <h1 className="text-5xl font-bold tracking-tighter text-white sm:text-6xl md:text-7xl">
-              Strategic Innovation Architecture
-            </h1>
-            <p className="text-2xl text-cyan-100 md:text-3xl">
-              We don't just solve problems - we help define the right problems to solve.
-            </p>
+        <main className="container relative min-h-screen pt-32 w-full flex flex-col items-center justify-center">
+          <div className="max-w-3xl">
+              <StrategicInnovationLogo />
             <div className="text-lg text-gray-300 space-y-4">
               <p>
                 True innovation happens at the intersection of technology and human need. 
@@ -43,13 +38,10 @@ export default function Page() {
                 create market-defining opportunities.
               </p>
               <p>
-                Our approach combines deep technical expertise with philosophical inquiry, 
-                helping organizations reframe their challenges through first-principles thinking.
+                Our approach combines deep technical expertise with broad understanding of systems and data, 
+                helping organizations reframe their challenges through a pragmatic approach to technology.
               </p>
             </div>
-            <Button size="lg" className="bg-cyan-500 text-black hover:bg-cyan-400">
-              Explore Partnership Models
-            </Button>
           </div>
         </main>
 
