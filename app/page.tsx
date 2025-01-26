@@ -36,7 +36,7 @@ export default function Page() {
         <footer className="">
           <div className="flex items-center justify-center py-4 text-sm text-cyan-200">
             <div className="max-w-3xl w-full  sm:text-left flex flex-col items-center justify-center space-y-8 text-cyan-200">
-              © {new Date().getFullYear()} WEBIT LLC | Innovation Partners
+              © {new Date().getFullYear()} WEBIT LLC | Strategic Innovation Partners
             </div>
           </div>
         </footer>
