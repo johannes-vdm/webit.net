@@ -1,10 +1,9 @@
 import { CanvasAnimation } from "@/components/canvas-animation"
 import { WebitLogo } from "@/components/webit-logo"
-import { StrategicInnovationLogo } from "@/components/strategic-innovation-logo"
 
 export default function Page() {
   return (
-    <div className="relative overflow-x-hidden">
+    <div className="relative overflow-x-hidden mx-auto max-w-screen-xl px-4 sm:px-6 md:px-8">
       {/* Fixed Background Container */}
       <div className="fixed inset-0 z-0 h-screen overflow-hidden">
         <CanvasAnimation />
@@ -12,22 +11,12 @@ export default function Page() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 min-h-screen flex flex-col">
-        <header className="absolute top-0 left-0 right-0 z-20">
-          <nav className="container flex items-center justify-between py-6">
-            <WebitLogo />
-            <div className="flex items-center gap-6 text-white">
-              <a href="mailto:info@webit.net" className="text-cyan-400 transition-colors">
-                info@webit.net
-              </a>
-            </div>
-          </nav>
-        </header>
+      <div className="relative z-10 min-h-screen flex flex-col w-full">
 
-        <main className="container relative pt-32 w-full flex-grow flex flex-col items-center justify-center">
-          <div className="max-w-3xl">
-              <StrategicInnovationLogo />
-            <div className="text-lg text-gray-400 space-y-4">
+        <main className="relative w-full flex-grow flex flex-col items-center justify-center pt-32">
+          <div className="max-w-3xl w-full text-center sm:text-left flex flex-col items-center justify-center space-y-8">
+            <WebitLogo/>
+            <div className="text-base sm:text-lg text-gray-400 space-y-4">
               <p>
                 True innovation happens at the intersection of technology and human need. 
                 We partner with visionary leaders to architect strategic pathways that 
@@ -36,17 +25,19 @@ export default function Page() {
               <p>
                 Our approach combines deep technical expertise with broad understanding of systems and data, 
                 helping organizations reframe their challenges through a pragmatic approach to technology.
-             <a href="mailto:info@webit.net" className="text-cyan-400 hover:text-cyan-300 transition-colors pl-2">
-              Request our services
-             </a>
+                <a href="mailto:info@webit.net" className="text-cyan-400 hover:text-cyan-300 transition-colors pl-2">
+                  Request our services
+                </a>
               </p>
             </div>
           </div>
         </main>
 
-        <footer className="z-50">
-          <div className="container flex items-center justify-between py-4 text-sm text-cyan-200">
-            © {new Date().getFullYear()} WEBIT LLC | Innovation Partners
+        <footer className="">
+          <div className="flex items-center justify-center py-4 text-sm text-cyan-200">
+            <div className="max-w-3xl w-full  sm:text-left flex flex-col items-center justify-center space-y-8 text-cyan-200">
+              © {new Date().getFullYear()} WEBIT LLC | Innovation Partners
+            </div>
           </div>
         </footer>
       </div>
