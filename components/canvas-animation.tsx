@@ -23,8 +23,6 @@ export function CanvasAnimation() {
     let time = 0
 
     const waveSources: WaveSource[] = [
-      { x: 0.3, y: 0.5, speed: 0.8, angle: 0 },
-      { x: 0.7, y: 0.5, speed: 0.6, angle: Math.PI },
       { x: 0.5, y: 0.3, speed: 0.4, angle: -Math.PI / 2 },
     ]
 

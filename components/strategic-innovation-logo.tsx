@@ -10,7 +10,7 @@ export function StrategicInnovationLogo() {
       <defs>
         <style>
           {`.cls-4 {
-              stroke: #A1A0A0FF;
+              stroke: #FFFFFFFF;
               stroke-width: 2;
               stroke-linejoin: round;
               fill: none;
