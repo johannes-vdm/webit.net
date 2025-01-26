@@ -18,7 +18,7 @@ export default function Page() {
             <WebitLogo/>
             <div className="text-base sm:text-lg text-gray-400 space-y-4">
               <p>
-                True innovation happens at the intersection of technology and human need. 
+                True innovation happens at the intersection of technology and problem solving. 
                 We partner with visionary leaders to architect strategic pathways that 
                 create market-defining opportunities.
               </p>
