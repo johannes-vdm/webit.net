@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { ThemeProvider } from "./providers"
 import type { ReactNode } from "react"
+import { Analytics } from "@vercel/analytics/react"
+
 
 export const metadata: Metadata = {
   title: 'WEBIT, Strategic Innovation Partners',
@@ -22,6 +24,7 @@ export default function RootLayout({
         <ThemeProvider>
           {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
