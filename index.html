@@ -73,12 +73,24 @@
             cursor: pointer;
             font-weight: bold;
         }
+
+        .pixel-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            z-index: 0;
+        }
     </style>
 </head>
 <body>
     <header class="pixel-header">
         <canvas class="pixel-canvas"></canvas>
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgMTAwIj48dGV4dCB4PSIwIiB5PSI3MCIgZm9udC1mYW1pbHk9IkNvdXJpZXIgTmV3IiBmaWxsPSIjMDBmZjAwIiBmb250LXNpemU9IjQ4Ij5QSVhFTEJPVFg8L3RleHQ+PC9zdmc+" class="pixel-logo">
+        <object type="image/svg+xml" data="Webit Logo.svg" class="pixel-logo"></object>
     </header>
 
     <section class="terminal-section">
@@ -131,7 +143,7 @@
         ];
 
         // Add movement parameters
-        const sourceSpeed = 0.002;
+        const sourceSpeed = 0.008;
         const orbitRadius = 0.1;
 
         function resizeCanvas() {
@@ -171,12 +183,12 @@
                     });
 
                     // Add turbulence
-                    height += Math.sin(x * 0.1 + time) * 0.2;
-                    height += Math.cos(y * 0.1 + time * 1.2) * 0.2;
+                    height += Math.sin(x * 0.2 + time * 2) * 0.3;
+                    height += Math.cos(y * 0.2 + time * 2.4) * 0.3;
 
                     // Color based on wave height
                     const intensity = Math.min(Math.abs(height * 50), 255);
-                    ctx.fillStyle = `rgba(0, ${100 + intensity}, ${200 + intensity}, ${0.5 + intensity/510})`;
+                    ctx.fillStyle = `rgba(150, ${200 + intensity}, 255, ${0.6 + intensity/510})`;
                     
                     // Draw pixel with size variation
                     const size = cellSize * (0.8 + Math.abs(height) * 0.3);
