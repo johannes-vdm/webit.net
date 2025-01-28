@@ -26,7 +26,7 @@ export default function Page() {
                 Our approach combines deep technical expertise with broad understanding of systems and data, 
                 helping organizations reframe their challenges through a pragmatic approach to technology.
                 <a href="mailto:info@webit.net" className="text-cyan-400 hover:text-cyan-300 transition-colors pl-2">
-                  Request our services
+                  info@webit.net
                 </a>
               </p>
             </div>
