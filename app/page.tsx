@@ -1,7 +1,25 @@
+"use client"
 import { CanvasAnimation } from "@/components/canvas-animation"
 import { WebitLogo } from "@/components/webit-logo"
 
 export default function Page() {
+
+  const config = {
+    url: process.env.NEXT_PUBLIC_CALENDLY_URL,
+    hide_landing_page_details: 1,
+    hide_gdpr_banner: 1
+  }
+
+  const openCalendly = () => {
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({
+        url: `${config.url}?hide_landing_page_details=${config.hide_landing_page_details}&hide_gdpr_banner=${config.hide_gdpr_banner}`
+      });
+    }
+    return false;
+
+  }
+
   return (
     <div className="relative overflow-x-hidden mx-auto max-w-screen-xl px-4 sm:px-6 md:px-8">
       {/* Fixed Background Container */}
@@ -22,20 +40,26 @@ export default function Page() {
                 We partner with visionary leaders to architect strategic pathways that 
                 create market-defining opportunities.
               </p>
-              <p>
-                Our approach combines deep technical expertise with broad understanding of systems and data, 
-                helping organizations reframe their challenges through a pragmatic approach to technology.
-                <a href="mailto:info@webit.net" className="text-cyan-400 hover:text-cyan-300 transition-colors pl-2">
-                  info@webit.net
+              <div>
+                <p>
+                  Our approach combines deep technical expertise with broad understanding of systems and data, 
+                  helping organizations reframe their challenges through a pragmatic approach to technology.    <a 
+                  href="#" 
+                  onClick={openCalendly}
+                  className="text-cyan-400 hover:text-cyan-300 transition-colors pl-1 cursor-pointer"
+                >
+                  Request our services
                 </a>
-              </p>
+                </p>
+             
+              </div>
             </div>
           </div>
         </main>
 
-        <footer className="">
+        <footer>
           <div className="flex items-center justify-center py-4 text-sm text-cyan-200">
-            <div className="max-w-3xl w-full  sm:text-left flex flex-col items-center justify-center space-y-8 text-cyan-200">
+            <div className="max-w-3xl w-full sm:text-left flex flex-col items-center justify-center space-y-8">
               © {new Date().getFullYear()} WEBIT LLC | Strategic Innovation Partners
             </div>
           </div>
@@ -44,4 +68,3 @@ export default function Page() {
     </div>
   )
 }
-

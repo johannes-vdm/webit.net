@@ -1,6 +1,6 @@
 "use client"
 import "@radix-ui/themes/styles.css"
-import { Theme, Button } from "@radix-ui/themes"
+import { Theme } from "@radix-ui/themes"
 import type { ReactNode } from "react"
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
@@ -10,11 +10,3 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     </Theme>
   )
 }
-
-export default function HelloRadix() {
-  return (
-    <Theme>
-      <Button variant="ghost">Hey 👋</Button>
-    </Theme>
-  )
-}  
