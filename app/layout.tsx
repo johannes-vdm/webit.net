@@ -41,13 +41,8 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <Analytics />
-        {/* Calendly Widget Script */}
         <Script
           src="https://assets.calendly.com/assets/external/widget.js"
-          strategy="afterInteractive"
-        />
-        <Script
-          src="https://assets.calendly.com/assets/external/widget.css"
           strategy="afterInteractive"
         />
       </body>
