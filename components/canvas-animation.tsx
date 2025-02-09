@@ -66,7 +66,7 @@ export function CanvasAnimation() {
           height += Math.cos(y * 0.015 + time * 1.8) * 0.4
 
           const intensity = Math.min(Math.abs(height * 60), 255)
-          ctx.fillStyle = `rgba(150, ${200 + intensity}, 255, ${0.7 + intensity / 510})`
+          ctx.fillStyle = `rgba(0, ${150 + intensity}, 255, ${0.7 + intensity / 510})`
 
           const size = cellSize * (0.9 + Math.abs(height) * 0.4) // Increased base size
           ctx.beginPath()
@@ -94,7 +94,7 @@ export function CanvasAnimation() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 w-full h-full"
-      style={{ background: "linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.8) 100%)" }}
+      style={{ background: "linear-gradient(135deg, rgba(100, 100, 100, 0.9) 0%, rgba(50, 50, 50, 0.8) 100%)" }}
     />
   )
 }
