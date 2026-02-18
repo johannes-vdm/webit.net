@@ -1,5 +1,6 @@
 import { CanvasAnimation } from "@/components/canvas-animation"
 import { WebitLogo } from "@/components/webit-logo"
+import { CalButton } from "@/components/cal-button"
 
 export default function Page() {
   return (
@@ -17,28 +18,16 @@ export default function Page() {
             <WebitLogo />
             <div className="text-base sm:text-lg text-gray-400 space-y-4">
               <p>
-                True innovation happens at the intersection of technology and problem solving. 
-                We partner with visionary leaders to architect strategic pathways that 
+                True innovation happens at the intersection of technology and problem solving.
+                We partner with visionary leaders to architect strategic pathways that
                 create market-defining opportunities.
               </p>
               <div>
                 <p>
-                  Our approach combines deep technical expertise with broad understanding of systems and data, 
+                  Our approach combines deep technical expertise with broad understanding of systems and data,
                   helping organizations reframe their challenges through a pragmatic approach to technology.
-                  <a 
-                    href={process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_URL}
-                    className="text-cyan-400 hover:text-cyan-300 transition-colors pl-1 cursor-pointer"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Request our services
-                  </a>
+                  <CalButton />
                 </p>
-                <div 
-                  id="calendar-button" 
-                  className="opacity-0 h-0 w-0 overflow-hidden absolute"
-                  data-scheduling-button
-                />
               </div>
             </div>
           </div>

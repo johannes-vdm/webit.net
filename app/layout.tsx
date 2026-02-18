@@ -3,7 +3,6 @@ import './globals.css'
 import { ThemeProvider } from "./providers"
 import type { ReactNode } from "react"
 import { Analytics } from "@vercel/analytics/react"
-import Script from 'next/script'
 
 export const metadata: Metadata = {
   title: 'WEBIT, Strategic Innovation Partners',
@@ -30,21 +29,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link 
-          href="https://assets.calendly.com/assets/external/widget.css" 
-          rel="stylesheet"
-        />
-      </head>
       <body className="h-screen overflow-auto">
         <ThemeProvider>
           {children}
         </ThemeProvider>
         <Analytics />
-        <Script
-          src="https://assets.calendly.com/assets/external/widget.js"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   )
