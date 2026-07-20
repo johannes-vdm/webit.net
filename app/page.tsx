@@ -35,8 +35,16 @@ export default function Page() {
 
         <footer>
           <div className="flex items-center justify-center py-4 text-sm text-cyan-200">
-            <div className="max-w-3xl w-full sm:text-left flex flex-col items-center justify-center space-y-8">
-              © {new Date().getFullYear()} WEBIT LLC | Strategic Innovation Partners
+            <div className="max-w-3xl w-full sm:text-left flex flex-col items-center justify-center space-y-2">
+              <span>© {new Date().getFullYear()} WEBIT LLC | Strategic Innovation Partners</span>
+              <div className="flex items-center gap-4">
+                <a href="https://twitter.com/webit" target="_blank" rel="me noopener noreferrer" className="hover:text-white">
+                  Twitter
+                </a>
+                <a href="https://johannesmerwe.com" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                  Founder
+                </a>
+              </div>
             </div>
           </div>
         </footer>
